@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+var model = Model()
+
 @main
 struct InnoDemoApp: App {
     var body: some Scene {

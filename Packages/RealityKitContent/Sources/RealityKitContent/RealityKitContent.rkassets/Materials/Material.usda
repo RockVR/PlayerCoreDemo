@@ -1,0 +1,637 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "Reality Composer Pro Version 1.0 (409.60.6)"
+    }
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+}
+
+def Xform "Material" (
+    active = true
+)
+{
+    def Material "Material"
+    {
+        reorder nameChildren = ["UsdPreviewSurface", "UnlitSurface", "leftColor", "TiledImage_2", "rightColor", "uvTilingRight", "uvOffsetRight", "uvTilingLeft", "Multiply_1", "Constant_2", "Separate4", "Combine3", "TiledImage", "texcoord", "GeometrySwitchCameraIndex", "TiledImage_1", "ScreenRoot"]
+        int inputs:ghostFixing = 0 (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-317.21976, 930.0967)
+                    float2 sizeInSubgraph = (141, 53)
+                    int stackingOrderInSubgraph = 1777
+                }
+            }
+        )
+        float inputs:ipd = 0 (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (197.89948, 946.6028)
+                    float2 sizeInSubgraph = (98, 53)
+                    int stackingOrderInSubgraph = 1507
+                }
+            }
+        )
+        asset inputs:leftRightInput (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-103.30025, 575.45685)
+                    float2 sizeInSubgraph = (154, 53)
+                    int stackingOrderInSubgraph = 1861
+                }
+            }
+        )
+        asset inputs:monoInput (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-99.117386, 62.85854)
+                    float2 sizeInSubgraph = (135, 53)
+                    int stackingOrderInSubgraph = 1510
+                }
+            }
+        )
+        int inputs:stereoMode = 0 (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-1391.2992, 426.47168)
+                    float2 sizeInSubgraph = (143, 53)
+                    int stackingOrderInSubgraph = 1910
+                }
+            }
+        )
+        int inputs:swapEyes = 0 (
+            customData = {
+                dictionary realitykit = {
+                    float2 positionInSubgraph = (-517.767, 1462.2463)
+                    float2 sizeInSubgraph = (130, 53)
+                    int stackingOrderInSubgraph = 1894
+                }
+            }
+        )
+        token outputs:mtlx:surface.connect = </Material/Material/UnlitSurface.outputs:out>
+        token outputs:realitykit:vertex.connect = </Material/Material/GeometryModifier.outputs:out>
+        token outputs:surface.connect = </Material/Material/Material/UsdPreviewSurface.outputs:surface>
+        string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:mtlx:surface"]
+        float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (1615.1101, 556.5224)
+        float2 ui:nodegraph:realitykit:subgraphOutputs:size = (182, 99)
+        int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 1428
+
+        def Shader "UsdPreviewSurface" (
+            active = false
+        )
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            token outputs:surface
+        }
+
+        def Shader "UnlitSurface"
+        {
+            uniform token info:id = "ND_realitykit_unlit_surfaceshader"
+            bool inputs:applyPostProcessToneMap
+            color3f inputs:color.connect = </Material/Material/Combine3.outputs:out>
+            bool inputs:hasPremultipliedAlpha
+            float inputs:opacity
+            float inputs:opacityThreshold
+            token outputs:out
+            float2 ui:nodegraph:node:pos = (1224.2079, 560.51874)
+            float2 ui:nodegraph:node:size = (195, 181)
+            int ui:nodegraph:node:stackingOrder = 627
+            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = []
+        }
+
+        def Shader "Separate4"
+        {
+            uniform token info:id = "ND_separate4_color4"
+            color4f inputs:in.connect = </Material/Material/GeometrySwitchCameraIndex.outputs:out>
+            float outputs:outa
+            float outputs:outb
+            float outputs:outg
+            float outputs:outr
+            float2 ui:nodegraph:node:pos = (852.0823, 536.1038)
+            float2 ui:nodegraph:node:size = (117, 163)
+            int ui:nodegraph:node:stackingOrder = 871
+        }
+
+        def Shader "Combine3"
+        {
+            uniform token info:id = "ND_combine3_color3"
+            float inputs:in1.connect = </Material/Material/Separate4.outputs:outr>
+            float inputs:in2.connect = </Material/Material/Separate4.outputs:outg>
+            float inputs:in3.connect = </Material/Material/Separate4.outputs:outb>
+            color3f outputs:out
+            float2 ui:nodegraph:node:pos = (1017.35693, 548.8761)
+            float2 ui:nodegraph:node:size = (146, 54)
+            int ui:nodegraph:node:stackingOrder = 631
+        }
+
+        def Shader "TiledImage"
+        {
+            uniform token info:id = "ND_tiledimage_color4"
+            color4f inputs:default
+            asset inputs:file.connect = </Material/Material.inputs:leftRightInput>
+            string inputs:filtertype
+            float2 inputs:realworldimagesize
+            float2 inputs:realworldtilesize
+            float2 inputs:texcoord.connect = </Material/Material/texcoordLeft.outputs:out>
+            float2 inputs:uvoffset.connect = </Material/Material/ifGhostFixing_1.outputs:out>
+            float2 inputs:uvtiling.connect = </Material/Material/uvTiling.outputs:out>
+            color4f outputs:out
+            float2 ui:nodegraph:node:pos = (175.82385, 393.49945)
+            float2 ui:nodegraph:node:size = (159, 235)
+            int ui:nodegraph:node:stackingOrder = 860
+            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:realworldimagesize"]
+        }
+
+        def Shader "GeometrySwitchCameraIndex"
+        {
+            uniform token info:id = "ND_realitykit_geometry_switch_cameraindex_color4"
+            color4f inputs:left.connect = </Material/Material/leftColor.outputs:out>
+            color4f inputs:mono.connect = </Material/Material/TiledImage_1.outputs:out>
+            color4f inputs:right.connect = </Material/Material/rightColor.outputs:out>
+            color4f outputs:out
+            float2 ui:nodegraph:node:pos = (616.362, 530.5221)
+            float2 ui:nodegraph:node:size = (237, 145)
+            int ui:nodegraph:node:stackingOrder = 1709
+        }
+
+        def Shader "leftColor"
+        {
+            uniform token info:id = "ND_constant_color4"
+            color4f inputs:value = (0, 0, 0, 0)
+            color4f inputs:value.connect = </Material/Material/TiledImage.outputs:out>
+            color4f outputs:out
+            float2 ui:nodegraph:node:pos = (386.47433, 548.77997)
+            float2 ui:nodegraph:node:size = (151, 53)
+            int ui:nodegraph:node:stackingOrder = 763
+        }
+
+        def Shader "TiledImage_2"
+        {
+            uniform token info:id = "ND_tiledimage_color4"
+            color4f inputs:default
+            asset inputs:file.connect = </Material/Material.inputs:leftRightInput>
+            string inputs:filtertype
+            float2 inputs:realworldimagesize
+            float2 inputs:realworldtilesize
+            float2 inputs:texcoord.connect = </Material/Material/texcoordRight.outputs:out>
+            float2 inputs:uvoffset.connect = </Material/Material/ifGhostFixing_2.outputs:out>
+            float2 inputs:uvtiling.connect = </Material/Material/uvTiling.outputs:out>
+            color4f outputs:out
+            float2 ui:nodegraph:node:pos = (174.69739, 716.3808)
+            float2 ui:nodegraph:node:size = (159, 235)
+            int ui:nodegraph:node:stackingOrder = 754
+        }
+
+        def Shader "rightColor"
+        {
+            uniform token info:id = "ND_constant_color4"
+            color4f inputs:value = (0, 0, 0, 0)
+            color4f inputs:value.connect = </Material/Material/TiledImage_2.outputs:out>
+            color4f outputs:out
+            float2 ui:nodegraph:node:pos = (380.74585, 631.94763)
+            float2 ui:nodegraph:node:size = (151, 53)
+            int ui:nodegraph:node:stackingOrder = 761
+        }
+
+        def Shader "uvOffsetRight"
+        {
+            uniform token info:id = "ND_constant_vector2"
+            float2 inputs:value = (0.5, 0)
+            float2 inputs:value.connect = </Material/Material/Add_6.outputs:out>
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (-374.895, 1241.5099)
+            float2 ui:nodegraph:node:size = (170, 53)
+            int ui:nodegraph:node:stackingOrder = 1757
+        }
+
+        def Shader "TiledImage_1"
+        {
+            uniform token info:id = "ND_tiledimage_color4"
+            color4f inputs:default
+            asset inputs:file.connect = </Material/Material.inputs:monoInput>
+            string inputs:filtertype
+            float2 inputs:realworldimagesize
+            float2 inputs:realworldtilesize
+            float2 inputs:texcoord
+            float2 inputs:uvoffset
+            float2 inputs:uvtiling.connect = </Material/Material/uvTiling.outputs:out>
+            color4f outputs:out
+            float2 ui:nodegraph:node:pos = (177.35413, 113.348495)
+            float2 ui:nodegraph:node:size = (159, 235)
+            int ui:nodegraph:node:stackingOrder = 861
+        }
+
+        def Shader "texcoordRight"
+        {
+            uniform token info:id = "ND_texcoord_vector2"
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (-76.203125, 701.5547)
+            float2 ui:nodegraph:node:size = (182, 53)
+            int ui:nodegraph:node:stackingOrder = 1300
+        }
+
+        def Shader "texcoordLeft"
+        {
+            uniform token info:id = "ND_texcoord_vector2"
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (-105.81095, 265.24167)
+            float2 ui:nodegraph:node:size = (182, 53)
+            int ui:nodegraph:node:stackingOrder = 1653
+        }
+
+        def Shader "LeftRightTiling"
+        {
+            uniform token info:id = "ND_ifequal_vector2I"
+            float2 inputs:in1 = (0.5, 1)
+            float2 inputs:in2
+            prepend int inputs:value1.connect = </Material/Material.inputs:stereoMode>
+            int inputs:value2 = 1
+            int inputs:value2.connect = </Material/Material/stereoLeftRight.outputs:out>
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (-648.76953, 413.13672)
+            float2 ui:nodegraph:node:size = (140, 163)
+            int ui:nodegraph:node:stackingOrder = 1825
+        }
+
+        def Shader "UpDownTiling"
+        {
+            uniform token info:id = "ND_ifequal_vector2I"
+            float2 inputs:in1 = (1, 0.5)
+            float2 inputs:in2
+            prepend int inputs:value1.connect = </Material/Material.inputs:stereoMode>
+            int inputs:value2 = 2
+            int inputs:value2.connect = </Material/Material/stereoUpDown.outputs:out>
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (-652.7403, 632.96246)
+            float2 ui:nodegraph:node:size = (135, 163)
+            int ui:nodegraph:node:stackingOrder = 1883
+            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:value2"]
+        }
+
+        def Shader "stereoMono"
+        {
+            uniform token info:id = "ND_constant_integer"
+            int inputs:value = 0
+            int outputs:out
+            float2 ui:nodegraph:node:pos = (-845.20593, 220.35562)
+            float2 ui:nodegraph:node:size = (161, 53)
+            int ui:nodegraph:node:stackingOrder = 1393
+        }
+
+        def Shader "MonoTiling"
+        {
+            uniform token info:id = "ND_ifequal_vector2I"
+            float2 inputs:in1 = (1, 1)
+            float2 inputs:in2
+            prepend int inputs:value1.connect = </Material/Material.inputs:stereoMode>
+            int inputs:value2.connect = </Material/Material/stereoMono.outputs:out>
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (-555.1914, 226.9375)
+            float2 ui:nodegraph:node:size = (117, 163)
+            int ui:nodegraph:node:stackingOrder = 1401
+            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:in2"]
+        }
+
+        def Shader "Add"
+        {
+            uniform token info:id = "ND_add_vector2"
+            float2 inputs:in1.connect = </Material/Material/MonoTiling.outputs:out>
+            float2 inputs:in2.connect = </Material/Material/LeftRightTiling.outputs:out>
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (-416.6991, 323.78748)
+            float2 ui:nodegraph:node:size = (63, 37)
+            int ui:nodegraph:node:stackingOrder = 1664
+        }
+
+        def Shader "Add_1"
+        {
+            uniform token info:id = "ND_add_vector2"
+            float2 inputs:in1.connect = </Material/Material/Add.outputs:out>
+            float2 inputs:in2.connect = </Material/Material/UpDownTiling.outputs:out>
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (-347.5989, 376.1299)
+            float2 ui:nodegraph:node:size = (63, 37)
+            int ui:nodegraph:node:stackingOrder = 1871
+        }
+
+        def Shader "LeftRightOffset"
+        {
+            uniform token info:id = "ND_ifequal_vector2I"
+            float2 inputs:in1 = (0.5, 0)
+            float2 inputs:in2
+            prepend int inputs:value1.connect = </Material/Material.inputs:stereoMode>
+            int inputs:value2 = 1
+            int inputs:value2.connect = </Material/Material/stereoLeftRight.outputs:out>
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (-782.05743, 907.4)
+            float2 ui:nodegraph:node:size = (145, 163)
+            int ui:nodegraph:node:stackingOrder = 1898
+            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:in2"]
+        }
+
+        def Shader "UpDownOffset"
+        {
+            uniform token info:id = "ND_ifequal_vector2I"
+            float2 inputs:in1 = (0, 0.5)
+            float2 inputs:in2
+            prepend int inputs:value1.connect = </Material/Material.inputs:stereoMode>
+            int inputs:value2.connect = </Material/Material/stereoUpDown.outputs:out>
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (-777.8063, 1110.4391)
+            float2 ui:nodegraph:node:size = (141, 163)
+            int ui:nodegraph:node:stackingOrder = 1904
+            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:in1"]
+        }
+
+        def Shader "Add_2"
+        {
+            uniform token info:id = "ND_add_vector2"
+            float2 inputs:in1.connect = </Material/Material/LeftRightOffset.outputs:out>
+            float2 inputs:in2.connect = </Material/Material/UpDownOffset.outputs:out>
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (-621.04584, 923.2318)
+            float2 ui:nodegraph:node:size = (63, 37)
+            int ui:nodegraph:node:stackingOrder = 1891
+        }
+
+        def Shader "uvTiling"
+        {
+            uniform token info:id = "ND_constant_vector2"
+            float2 inputs:value = (0.5, 0)
+            float2 inputs:value.connect = </Material/Material/Add_5.outputs:out>
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (-119.515366, 353.37543)
+            float2 ui:nodegraph:node:size = (154, 53)
+            int ui:nodegraph:node:stackingOrder = 1655
+        }
+
+        def Shader "GeometryModifier"
+        {
+            uniform token info:id = "ND_realitykit_geometrymodifier_vertexshader"
+            color4f inputs:color
+            float3 inputs:modelPositionOffset.connect = </Material/Material/GeometrySwitchCameraIndex_1.outputs:out>
+            float3 inputs:normal
+            token outputs:out
+            float2 ui:nodegraph:node:pos = (1221.701, 852.676)
+            float2 ui:nodegraph:node:size = (197, 325)
+            int ui:nodegraph:node:stackingOrder = 1503
+        }
+
+        def Shader "GeometrySwitchCameraIndex_1"
+        {
+            uniform token info:id = "ND_realitykit_geometry_switch_cameraindex_vector3"
+            float3 inputs:left.connect = </Material/Material/ipdLeft.outputs:out>
+            float3 inputs:mono.connect = </Material/Material/ipdMono.outputs:out>
+            float3 inputs:right.connect = </Material/Material/ipdRight.outputs:out>
+            float3 outputs:out
+            float2 ui:nodegraph:node:pos = (878.1367, 778.9844)
+            float2 ui:nodegraph:node:size = (250, 145)
+            int ui:nodegraph:node:stackingOrder = 1438
+        }
+
+        def Shader "Multiply"
+        {
+            uniform token info:id = "ND_multiply_float"
+            float inputs:in1.connect = </Material/Material.inputs:ipd>
+            float inputs:in2 = -1
+            float outputs:out
+            float2 ui:nodegraph:node:pos = (370.47723, 947.30774)
+            float2 ui:nodegraph:node:size = (61, 36)
+            int ui:nodegraph:node:stackingOrder = 1497
+        }
+
+        def Shader "ipdRight"
+        {
+            uniform token info:id = "ND_combine3_vector3"
+            float inputs:in1.connect = </Material/Material/Multiply.outputs:out>
+            float inputs:in2
+            float inputs:in3
+            float3 outputs:out
+            float2 ui:nodegraph:node:pos = (534.03644, 922.7658)
+            float2 ui:nodegraph:node:size = (135, 54)
+            int ui:nodegraph:node:stackingOrder = 1495
+        }
+
+        def Shader "ipdLeft"
+        {
+            uniform token info:id = "ND_combine3_vector3"
+            float inputs:in1.connect = </Material/Material.inputs:ipd>
+            float inputs:in2
+            float inputs:in3
+            float3 outputs:out
+            float2 ui:nodegraph:node:pos = (538.1828, 813.71124)
+            float2 ui:nodegraph:node:size = (133, 54)
+            int ui:nodegraph:node:stackingOrder = 1493
+        }
+
+        def Shader "ipdMono"
+        {
+            uniform token info:id = "ND_combine3_vector3"
+            prepend float inputs:in1.connect = </Material/Material.inputs:ipd>
+            float3 outputs:out
+            float2 ui:nodegraph:node:pos = (513.58185, 707.8602)
+            float2 ui:nodegraph:node:size = (137, 54)
+            int ui:nodegraph:node:stackingOrder = 1506
+        }
+
+        def Shader "ifGhostFixing_2"
+        {
+            uniform token info:id = "ND_ifequal_vector2I"
+            float2 inputs:in1.connect = None
+            float2 inputs:in2.connect = </Material/Material/ifSwapEyes_2.outputs:out>
+            int inputs:value1.connect = </Material/Material.inputs:ghostFixing>
+            int inputs:value2 = 1
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (28.048445, 1153.2937)
+            float2 ui:nodegraph:node:size = (148, 163)
+            int ui:nodegraph:node:stackingOrder = 1792
+        }
+
+        def Shader "ifSwapEyes_2"
+        {
+            uniform token info:id = "ND_ifequal_vector2I"
+            float2 inputs:in1.connect = </Material/Material/uvOffsetRight.outputs:out>
+            float2 inputs:in2.connect = None
+            prepend int inputs:value1.connect = </Material/Material.inputs:swapEyes>
+            int inputs:value2 = 0
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (-164.52219, 1389.8989)
+            float2 ui:nodegraph:node:size = (136, 163)
+            int ui:nodegraph:node:stackingOrder = 1796
+        }
+
+        def Shader "ifSwayEyes_1"
+        {
+            uniform token info:id = "ND_ifequal_vector2I"
+            float2 inputs:in1.connect = </Material/Material/uvOffsetRight.outputs:out>
+            float2 inputs:in2.connect = None
+            prepend int inputs:value1.connect = </Material/Material.inputs:swapEyes>
+            int inputs:value2 = 1
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (-206.30058, 1124.278)
+            float2 ui:nodegraph:node:size = (132, 163)
+            int ui:nodegraph:node:stackingOrder = 1797
+        }
+
+        def Shader "ifGhostFixing_1"
+        {
+            uniform token info:id = "ND_ifequal_vector2I"
+            delete float2 inputs:in1.connect = </Material/Material/ifSwayEyes_1.outputs:out>
+            float2 inputs:in2.connect = </Material/Material/ifSwayEyes_1.outputs:out>
+            int inputs:value1.connect = </Material/Material.inputs:ghostFixing>
+            int inputs:value2 = 1
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (-22.123137, 951.9394)
+            float2 ui:nodegraph:node:size = (144, 163)
+            int ui:nodegraph:node:stackingOrder = 1793
+        }
+
+        def Shader "FullLRTiling"
+        {
+            uniform token info:id = "ND_ifequal_vector2I"
+            float2 inputs:in1 = (0.5, 1)
+            float2 inputs:in2
+            int inputs:value1.connect = </Material/Material.inputs:stereoMode>
+            int inputs:value2 = 1
+            int inputs:value2.connect = </Material/Material/stereoFullLR.outputs:out>
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (-481.71875, 540.0747)
+            float2 ui:nodegraph:node:size = (122, 163)
+            int ui:nodegraph:node:stackingOrder = 1863
+        }
+
+        def Shader "stereoUpDown"
+        {
+            uniform token info:id = "ND_constant_integer"
+            int inputs:value = 2
+            int outputs:out
+            float2 ui:nodegraph:node:pos = (-1330.5966, 791.6022)
+            float2 ui:nodegraph:node:size = (178, 53)
+            int ui:nodegraph:node:stackingOrder = 1881
+        }
+
+        def Shader "stereoLeftRight"
+        {
+            uniform token info:id = "ND_constant_integer"
+            int inputs:value = 1
+            int outputs:out
+            float2 ui:nodegraph:node:pos = (-1326.5223, 698.6373)
+            float2 ui:nodegraph:node:size = (183, 53)
+            int ui:nodegraph:node:stackingOrder = 1881
+        }
+
+        def Shader "stereoFullLR"
+        {
+            uniform token info:id = "ND_constant_integer"
+            int inputs:value = 3
+            int outputs:out
+            float2 ui:nodegraph:node:pos = (-1334.3153, 871.02795)
+            float2 ui:nodegraph:node:size = (164, 53)
+            int ui:nodegraph:node:stackingOrder = 1881
+        }
+
+        def Shader "stereoFullOU"
+        {
+            uniform token info:id = "ND_constant_integer"
+            int inputs:value = 4
+            int outputs:out
+            float2 ui:nodegraph:node:pos = (-1332.0302, 944.1256)
+            float2 ui:nodegraph:node:size = (168, 53)
+            int ui:nodegraph:node:stackingOrder = 1881
+        }
+
+        def Shader "Add_4"
+        {
+            uniform token info:id = "ND_add_vector2"
+            float2 inputs:in1.connect = </Material/Material/Add_1.outputs:out>
+            float2 inputs:in2.connect = </Material/Material/FullLRTiling.outputs:out>
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (-291.04297, 429.72266)
+            float2 ui:nodegraph:node:size = (63, 37)
+            int ui:nodegraph:node:stackingOrder = 1873
+        }
+
+        def Shader "FullOUTiling"
+        {
+            uniform token info:id = "ND_ifequal_vector2I"
+            float2 inputs:in1 = (1, 0.5)
+            float2 inputs:in2
+            int inputs:value1.connect = </Material/Material.inputs:stereoMode>
+            int inputs:value2 = 2
+            int inputs:value2.connect = </Material/Material/stereoFullOU.outputs:out>
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (-476.71686, 753.26324)
+            float2 ui:nodegraph:node:size = (125, 163)
+            int ui:nodegraph:node:stackingOrder = 1884
+            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:value2"]
+        }
+
+        def Shader "Add_5"
+        {
+            uniform token info:id = "ND_add_vector2"
+            float2 inputs:in1.connect = </Material/Material/Add_4.outputs:out>
+            float2 inputs:in2.connect = </Material/Material/FullOUTiling.outputs:out>
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (-232.35938, 489.15234)
+            float2 ui:nodegraph:node:size = (63, 37)
+            int ui:nodegraph:node:stackingOrder = 1875
+        }
+
+        def Shader "FullLROffset"
+        {
+            uniform token info:id = "ND_ifequal_vector2I"
+            float2 inputs:in1 = (0.5, 0)
+            float2 inputs:in2
+            int inputs:value1.connect = </Material/Material.inputs:stereoMode>
+            int inputs:value2 = 1
+            int inputs:value2.connect = </Material/Material/stereoFullLR.outputs:out>
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (-600.9285, 1049.611)
+            float2 ui:nodegraph:node:size = (126, 163)
+            int ui:nodegraph:node:stackingOrder = 1903
+            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:in2"]
+        }
+
+        def Shader "FullOUOffset"
+        {
+            uniform token info:id = "ND_ifequal_vector2I"
+            float2 inputs:in1 = (0, 0.5)
+            float2 inputs:in2
+            int inputs:value1.connect = </Material/Material.inputs:stereoMode>
+            int inputs:value2.connect = </Material/Material/stereoFullOU.outputs:out>
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (-603.9547, 1255.3844)
+            float2 ui:nodegraph:node:size = (130, 163)
+            int ui:nodegraph:node:stackingOrder = 1908
+            string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:in1"]
+        }
+
+        def Shader "Add_3"
+        {
+            uniform token info:id = "ND_add_vector2"
+            float2 inputs:in1.connect = </Material/Material/FullLROffset.outputs:out>
+            float2 inputs:in2.connect = </Material/Material/FullOUOffset.outputs:out>
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (-446.01953, 1132.8633)
+            float2 ui:nodegraph:node:size = (63, 37)
+            int ui:nodegraph:node:stackingOrder = 1913
+        }
+
+        def Shader "Add_6"
+        {
+            uniform token info:id = "ND_add_vector2"
+            float2 inputs:in1.connect = </Material/Material/Add_2.outputs:out>
+            float2 inputs:in2.connect = </Material/Material/Add_3.outputs:out>
+            float2 outputs:out
+            float2 ui:nodegraph:node:pos = (-384.4375, 1034.9531)
+            float2 ui:nodegraph:node:size = (63, 37)
+            int ui:nodegraph:node:stackingOrder = 1914
+        }
+    }
+}
+

@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0082F90F2C1AE5B200A3DD4C /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0082F90E2C1AE5B200A3DD4C /* Model.swift */; };
+		4E315BE32C19E8ED00BF68DD /* pi_output.mkv in Resources */ = {isa = PBXBuildFile; fileRef = 4EEA77AB2C19C72700A761B3 /* pi_output.mkv */; };
+		4E315BEE2C19F64500BF68DD /* i-see-fire.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 4E315BED2C19F64500BF68DD /* i-see-fire.mp4 */; };
 		4E38E97D2C18A476009D14B2 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = 4E38E97C2C18A476009D14B2 /* RealityKitContent */; };
 		4E38E97F2C18A476009D14B2 /* InnoDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E38E97E2C18A476009D14B2 /* InnoDemoApp.swift */; };
 		4E38E9812C18A476009D14B2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E38E9802C18A476009D14B2 /* ContentView.swift */; };
@@ -14,9 +17,12 @@
 		4E38E9852C18A476009D14B2 /* ImageBasedLighting.skybox in Resources */ = {isa = PBXBuildFile; fileRef = 4E38E9842C18A476009D14B2 /* ImageBasedLighting.skybox */; };
 		4E38E9872C18A478009D14B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E38E9862C18A478009D14B2 /* Assets.xcassets */; };
 		4E38E98A2C18A478009D14B2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E38E9892C18A478009D14B2 /* Preview Assets.xcassets */; };
+		4EF967962C19E14B0041C0B6 /* PlayerCore in Frameworks */ = {isa = PBXBuildFile; productRef = 4EF967952C19E14B0041C0B6 /* PlayerCore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0082F90E2C1AE5B200A3DD4C /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		4E315BED2C19F64500BF68DD /* i-see-fire.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "i-see-fire.mp4"; sourceTree = "<group>"; };
 		4E38E9772C18A476009D14B2 /* InnoDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InnoDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E38E97B2C18A476009D14B2 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		4E38E97E2C18A476009D14B2 /* InnoDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnoDemoApp.swift; sourceTree = "<group>"; };
@@ -26,6 +32,7 @@
 		4E38E9862C18A478009D14B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E38E9892C18A478009D14B2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4E38E98B2C18A478009D14B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4EEA77AB2C19C72700A761B3 /* pi_output.mkv */ = {isa = PBXFileReference; lastKnownFileType = file; path = pi_output.mkv; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EF967962C19E14B0041C0B6 /* PlayerCore in Frameworks */,
 				4E38E97D2C18A476009D14B2 /* RealityKitContent in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -46,6 +54,7 @@
 				4E38E9792C18A476009D14B2 /* InnoDemo */,
 				4E38E97A2C18A476009D14B2 /* Packages */,
 				4E38E9782C18A476009D14B2 /* Products */,
+				4EEA77A82C19B9ED00A761B3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,6 +69,8 @@
 		4E38E9792C18A476009D14B2 /* InnoDemo */ = {
 			isa = PBXGroup;
 			children = (
+				4E315BED2C19F64500BF68DD /* i-see-fire.mp4 */,
+				4EEA77AB2C19C72700A761B3 /* pi_output.mkv */,
 				4E38E97E2C18A476009D14B2 /* InnoDemoApp.swift */,
 				4E38E9802C18A476009D14B2 /* ContentView.swift */,
 				4E38E9822C18A476009D14B2 /* ImmersiveView.swift */,
@@ -67,6 +78,7 @@
 				4E38E9862C18A478009D14B2 /* Assets.xcassets */,
 				4E38E98B2C18A478009D14B2 /* Info.plist */,
 				4E38E9882C18A478009D14B2 /* Preview Content */,
+				0082F90E2C1AE5B200A3DD4C /* Model.swift */,
 			);
 			path = InnoDemo;
 			sourceTree = "<group>";
@@ -87,6 +99,13 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		4EEA77A82C19B9ED00A761B3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -105,6 +124,7 @@
 			name = InnoDemo;
 			packageProductDependencies = (
 				4E38E97C2C18A476009D14B2 /* RealityKitContent */,
+				4EF967952C19E14B0041C0B6 /* PlayerCore */,
 			);
 			productName = InnoDemo;
 			productReference = 4E38E9772C18A476009D14B2 /* InnoDemo.app */;
@@ -134,6 +154,9 @@
 				Base,
 			);
 			mainGroup = 4E38E96E2C18A476009D14B2;
+			packageReferences = (
+				4EEA77AF2C19CBA400A761B3 /* XCLocalSwiftPackageReference "../PlayerCore" */,
+			);
 			productRefGroup = 4E38E9782C18A476009D14B2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -150,7 +173,9 @@
 			files = (
 				4E38E9872C18A478009D14B2 /* Assets.xcassets in Resources */,
 				4E38E98A2C18A478009D14B2 /* Preview Assets.xcassets in Resources */,
+				4E315BE32C19E8ED00BF68DD /* pi_output.mkv in Resources */,
 				4E38E9852C18A476009D14B2 /* ImageBasedLighting.skybox in Resources */,
+				4E315BEE2C19F64500BF68DD /* i-see-fire.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +189,7 @@
 				4E38E9812C18A476009D14B2 /* ContentView.swift in Sources */,
 				4E38E97F2C18A476009D14B2 /* InnoDemoApp.swift in Sources */,
 				4E38E9832C18A476009D14B2 /* ImmersiveView.swift in Sources */,
+				0082F90F2C1AE5B200A3DD4C /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +338,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
 			name = Debug;
 		};
@@ -338,6 +365,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
 			name = Release;
 		};
@@ -364,10 +392,22 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		4EEA77AF2C19CBA400A761B3 /* XCLocalSwiftPackageReference "../PlayerCore" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../PlayerCore;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		4E38E97C2C18A476009D14B2 /* RealityKitContent */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = RealityKitContent;
+		};
+		4EF967952C19E14B0041C0B6 /* PlayerCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4EEA77AF2C19CBA400A761B3 /* XCLocalSwiftPackageReference "../PlayerCore" */;
+			productName = PlayerCore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

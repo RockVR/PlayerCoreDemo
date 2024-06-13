@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "ffmpegkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kingslay/FFmpegKit.git",
+      "state" : {
+        "revision" : "4bd5fb4cbb8b9bcf980e7920491c654bde33c275",
+        "version" : "6.1.2"
+      }
+    }
+  ],
+  "version" : 2
+}

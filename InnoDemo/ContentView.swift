@@ -8,9 +8,10 @@
 import SwiftUI
 import RealityKit
 import RealityKitContent
+import PlayerCore
 
 struct ContentView: View {
-
+    @ObservedObject private var _model = model
     @State private var showImmersiveSpace = false
     @State private var immersiveSpaceIsShown = false
 
@@ -19,36 +20,21 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            Model3D(named: "Scene", bundle: realityKitContentBundle)
-                .padding(.bottom, 50)
-
-            Text("Hello, world!")
-
-            Toggle("Show ImmersiveSpace", isOn: $showImmersiveSpace)
-                .font(.title)
-                .frame(width: 360)
-                .padding(24)
-                .glassBackgroundEffect()
+            let url = Bundle.main.url(forResource: "pi_output", withExtension: "mkv")!
+            
+            MoonVideoPlayer(coordinator: MoonVideoPlayer.Coordinator(), url: url, options: model.options)
+                .onStateChanged { playerLayer, state in
+                    if state == .readyToPlay {
+                        playerLayer.play()
+                    }
+                }
+                .onBufferChanged { bufferedCount, consumeTime in
+                    print("bufferedCount \(bufferedCount), consumeTime \(consumeTime)")
+                }
+            
+            ImmersiveView()
         }
         .padding()
-        .onChange(of: showImmersiveSpace) { _, newValue in
-            Task {
-                if newValue {
-                    switch await openImmersiveSpace(id: "ImmersiveSpace") {
-                    case .opened:
-                        immersiveSpaceIsShown = true
-                    case .error, .userCancelled:
-                        fallthrough
-                    @unknown default:
-                        immersiveSpaceIsShown = false
-                        showImmersiveSpace = false
-                    }
-                } else if immersiveSpaceIsShown {
-                    await dismissImmersiveSpace()
-                    immersiveSpaceIsShown = false
-                }
-            }
-        }
     }
 }
 
