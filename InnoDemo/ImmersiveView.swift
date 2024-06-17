@@ -26,9 +26,25 @@ struct ImmersiveView: View {
                 if let root = scene.findEntity(named: "Root") {
                     print(root.children)
                     if let mesh = root.findEntity(named: "Cube") as? ModelEntity {
+                        
+                        let width: Float = 1.6
+                        let height: Float = 0.9
+                        let depth: Float = 0.1
+                        
+                        let rectangularMesh = MeshResource.generateBox(size: [width, height, depth])
+                        mesh.model = ModelComponent(mesh: rectangularMesh, materials: mesh.model!.materials)
+                        
+//                        mesh.position = [0, 0, -1]
+                        
                         if var mat = mesh.model?.materials.first as? ShaderGraphMaterial {
                             do {
+                                let uvTransform = simd_float4x4(float4(-1, 0, 0, 0),
+                                                                float4(0, 1, 0, 0),
+                                                                float4(0, 0, 1, 0),
+                                                                float4(0, 0, 0, 1))
+                                
                                 try mat.setParameter(name: "monoInput", value: .textureResource(appModel.textureResource!))
+                                try mat.setParameter(name: "monoInput_UVTransform", value: .float4x4(uvTransform))
                             } catch {
                                 print(error)
                             }
