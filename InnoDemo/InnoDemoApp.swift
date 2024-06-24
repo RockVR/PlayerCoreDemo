@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PlayerCore
 
 var model = Model()
 
@@ -13,7 +14,7 @@ var model = Model()
 struct InnoDemoApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(model: model, coordinator: MoonVideoPlayer.Coordinator())
         }
 
         ImmersiveSpace(id: "ImmersiveSpace") {
