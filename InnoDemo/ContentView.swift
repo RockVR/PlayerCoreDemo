@@ -63,7 +63,8 @@ struct ContentView: View {
         }
         .onAppear() {
             Task {
-                let url = "https://m.youtube.com/watch?v=zhseic0xcr4"
+                let url = "https://cn.pornhub.com/view_video.php?viewkey=663885d0f1448"
+//                let url = "https://m.youtube.com/watch?v=zhseic0xcr4"
                 gotoTarget(urlString: url)
                 let item = await parseUrlAndPlay()
                 self.urlString = item!.url

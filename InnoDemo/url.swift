@@ -7,7 +7,10 @@
 
 import Foundation
 import WebKit
+import Python
+import PythonKit
 
+var pyInit = false
 let webview = getWebKit()
 let originalUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko)"
 
@@ -316,11 +319,65 @@ func genPlayItem(originalUrlString: String, videoUrlString: String = "", audioUr
     return currentPlayItem(title: title, originalUrl: originalUrlString, url: mainFile.absoluteString)
 }
 
+func initPy() async throws {
+    let stdLibPath = Bundle.main.path(forResource: "python-stdlib", ofType: nil)!
+    let libDynloadPath = Bundle.main.path(forResource: "python-stdlib/lib-dynload", ofType: nil)!
+    let bundlePath = Bundle.main.bundlePath
+
+    setenv("PYTHONHOME", stdLibPath, 1)
+    setenv("PYTHONPATH", "\(stdLibPath):\(libDynloadPath):\(bundlePath)", 1)
+    Py_Initialize()
+    let sys = Python.import("sys")
+
+    let frameworkPath = Bundle.main.path(forResource: "Frameworks", ofType: nil)
+    let fileManager = FileManager.default
+    let enumerator = fileManager.enumerator(atPath: frameworkPath!)
+
+    while let element = enumerator?.nextObject() as? String {
+        let fullPath = (frameworkPath! as NSString).appendingPathComponent(element)
+        var isDirectory: ObjCBool = false
+        if fileManager.fileExists(atPath: fullPath, isDirectory: &isDirectory), isDirectory.boolValue {
+            sys.path.append(fullPath)
+        }
+    }
+    
+    pyInit = true
+}
+
+func parseWithCookie(id: String, cookie: String) async throws -> ResponseData {
+    if !pyInit {
+        try await initPy()
+    }
+
+    let fileManager = FileManager.default
+    let directory = try fileManager
+        .url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+    
+    let mainFile = directory.appendingPathComponent("cookie.txt")
+    
+    let cookiePath = id.contains("youtube")
+
+    try cookie.write(to: mainFile, atomically: true, encoding: .utf8)
+
+    let dlp = Python.import("getytbinfo")
+
+    dlp.updateCertifi()
+
+    let info = "\(dlp.getInfo("\(id)", "\(cookiePath ? mainFile.path : "")"))"
+    
+    print(info)
+
+    let result = try JSONDecoder().decode(ResponseData.self, from: info.data(using: .utf8)!)
+    return result
+}
+
 func parseOnlineVideoDlp(_ url: String, _ cookie: String) async throws -> currentPlayItem {
     var _info: ResponseData?
     do {
         if URLIdentifier.checkIfYoutube(url) {
             _info = try await parseWithCookieRemote(id: url, cookie: cookie)
+        } else if URLIdentifier.checkIfValid(url) {
+            _info = try await parseWithCookie(id: url, cookie: cookie)
         }
     } catch {
         let errorMsg = "dlpError: \(error)"

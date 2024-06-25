@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		001FB8822C29535F00760E95 /* url.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001FB8812C29535F00760E95 /* url.swift */; };
+		003BBC2C2C2ACCAE00C3E2F3 /* dylib-Info-template.plist in Resources */ = {isa = PBXBuildFile; fileRef = 003BBC2B2C2ACCAE00C3E2F3 /* dylib-Info-template.plist */; };
+		003BBC2E2C2ACCF100C3E2F3 /* getytbinfo.py in Resources */ = {isa = PBXBuildFile; fileRef = 003BBC2D2C2ACCF100C3E2F3 /* getytbinfo.py */; };
+		003BBC312C2ACD4F00C3E2F3 /* Python.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 003BBC2F2C2ACD4F00C3E2F3 /* Python.xcframework */; };
+		003BBC322C2ACD4F00C3E2F3 /* python-stdlib in Resources */ = {isa = PBXBuildFile; fileRef = 003BBC302C2ACD4F00C3E2F3 /* python-stdlib */; };
+		003BBC352C2ACDC100C3E2F3 /* PythonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 003BBC342C2ACDC100C3E2F3 /* PythonKit */; };
 		0082F90F2C1AE5B200A3DD4C /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0082F90E2C1AE5B200A3DD4C /* Model.swift */; };
 		4E38E97D2C18A476009D14B2 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = 4E38E97C2C18A476009D14B2 /* RealityKitContent */; };
 		4E38E97F2C18A476009D14B2 /* InnoDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E38E97E2C18A476009D14B2 /* InnoDemoApp.swift */; };
@@ -21,6 +26,10 @@
 
 /* Begin PBXFileReference section */
 		001FB8812C29535F00760E95 /* url.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = url.swift; sourceTree = "<group>"; };
+		003BBC2B2C2ACCAE00C3E2F3 /* dylib-Info-template.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "dylib-Info-template.plist"; sourceTree = "<group>"; };
+		003BBC2D2C2ACCF100C3E2F3 /* getytbinfo.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = getytbinfo.py; sourceTree = "<group>"; };
+		003BBC2F2C2ACD4F00C3E2F3 /* Python.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Python.xcframework; sourceTree = "<group>"; };
+		003BBC302C2ACD4F00C3E2F3 /* python-stdlib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "python-stdlib"; sourceTree = "<group>"; };
 		0082F90E2C1AE5B200A3DD4C /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		4E38E9772C18A476009D14B2 /* InnoDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InnoDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E38E97B2C18A476009D14B2 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
@@ -39,7 +48,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EF967962C19E14B0041C0B6 /* PlayerCore in Frameworks */,
+				003BBC312C2ACD4F00C3E2F3 /* Python.xcframework in Frameworks */,
 				4E38E97D2C18A476009D14B2 /* RealityKitContent in Frameworks */,
+				003BBC352C2ACDC100C3E2F3 /* PythonKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -49,6 +60,7 @@
 		4E38E96E2C18A476009D14B2 = {
 			isa = PBXGroup;
 			children = (
+				003BBC2D2C2ACCF100C3E2F3 /* getytbinfo.py */,
 				4E38E9792C18A476009D14B2 /* InnoDemo */,
 				4E38E97A2C18A476009D14B2 /* Packages */,
 				4E38E9782C18A476009D14B2 /* Products */,
@@ -67,6 +79,7 @@
 		4E38E9792C18A476009D14B2 /* InnoDemo */ = {
 			isa = PBXGroup;
 			children = (
+				003BBC2B2C2ACCAE00C3E2F3 /* dylib-Info-template.plist */,
 				4E38E97E2C18A476009D14B2 /* InnoDemoApp.swift */,
 				4E38E9802C18A476009D14B2 /* ContentView.swift */,
 				4E38E9822C18A476009D14B2 /* ImmersiveView.swift */,
@@ -99,6 +112,8 @@
 		4EEA77A82C19B9ED00A761B3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				003BBC302C2ACD4F00C3E2F3 /* python-stdlib */,
+				003BBC2F2C2ACD4F00C3E2F3 /* Python.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -113,6 +128,8 @@
 				4E38E9732C18A476009D14B2 /* Sources */,
 				4E38E9742C18A476009D14B2 /* Frameworks */,
 				4E38E9752C18A476009D14B2 /* Resources */,
+				003BBC362C2ACE6200C3E2F3 /* Purge */,
+				003BBC372C2ACE9100C3E2F3 /* Code sign */,
 			);
 			buildRules = (
 			);
@@ -122,6 +139,7 @@
 			packageProductDependencies = (
 				4E38E97C2C18A476009D14B2 /* RealityKitContent */,
 				4EF967952C19E14B0041C0B6 /* PlayerCore */,
+				003BBC342C2ACDC100C3E2F3 /* PythonKit */,
 			);
 			productName = InnoDemo;
 			productReference = 4E38E9772C18A476009D14B2 /* InnoDemo.app */;
@@ -153,6 +171,7 @@
 			mainGroup = 4E38E96E2C18A476009D14B2;
 			packageReferences = (
 				4EEA77AF2C19CBA400A761B3 /* XCLocalSwiftPackageReference "../PlayerCore" */,
+				003BBC332C2ACDC100C3E2F3 /* XCRemoteSwiftPackageReference "PythonKit" */,
 			);
 			productRefGroup = 4E38E9782C18A476009D14B2 /* Products */;
 			projectDirPath = "";
@@ -169,12 +188,54 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E38E9872C18A478009D14B2 /* Assets.xcassets in Resources */,
+				003BBC2C2C2ACCAE00C3E2F3 /* dylib-Info-template.plist in Resources */,
+				003BBC322C2ACD4F00C3E2F3 /* python-stdlib in Resources */,
+				003BBC2E2C2ACCF100C3E2F3 /* getytbinfo.py in Resources */,
 				4E38E98A2C18A478009D14B2 /* Preview Assets.xcassets in Resources */,
 				4E38E9852C18A476009D14B2 /* ImageBasedLighting.skybox in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		003BBC362C2ACE6200C3E2F3 /* Purge */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Purge;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [ \"$EFFECTIVE_PLATFORM_NAME\" = \"-xrsimulator\" ]; then\n    echo \"Purging Python modules for iOS Device\"\n    find \"$CODESIGNING_FOLDER_PATH/python-stdlib\" -name \"*.*-xros.dylib\" -exec rm -f \"{}\" \\;\nelse\n    echo \"Purging Python modules for iOS Simulator\"\n    find \"$CODESIGNING_FOLDER_PATH\" -name \"*.*-xrsimulator.dylib\" -exec rm -f \"{}\" \\;\nfi\n";
+		};
+		003BBC372C2ACE9100C3E2F3 /* Code sign */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Code sign";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nset -e\n\ninstall_dylib () {\n    INSTALL_BASE=$1\n    FULL_DYLIB=$2\n\n    # The name of the .dylib file\n    DYLIB=$(basename \"$FULL_DYLIB\")\n    # The name of the .dylib file, relative to the install base\n    RELATIVE_DYLIB=${FULL_DYLIB#$CODESIGNING_FOLDER_PATH/$INSTALL_BASE/}\n    # The (hopefully unique) name of the framework, constructed by replacing path\n    # separators in the relative name with underscores.\n    FRAMEWORK_NAME=$(echo $RELATIVE_DYLIB | cut -d \".\" -f 1 | tr \"/\" \"_\");\n    # A bundle identifier; not actually used, but required by Xcode framework packaging\n    FRAMEWORK_BUNDLE_ID=$(echo $PRODUCT_BUNDLE_IDENTIFIER.$FRAMEWORK_NAME | tr \"_\" \"-\")\n    # The name of the framework folder.\n    FRAMEWORK_FOLDER=\"Frameworks/$FRAMEWORK_NAME.framework\"\n\n    # If the framework folder doesn't exist, create it.\n    if [ ! -d \"$CODESIGNING_FOLDER_PATH/$FRAMEWORK_FOLDER\" ]; then\n        echo \"Creating framework for $RELATIVE_DYLIB\"\n        mkdir -p \"$CODESIGNING_FOLDER_PATH/$FRAMEWORK_FOLDER\"\n\n        cp \"$CODESIGNING_FOLDER_PATH/dylib-Info-template.plist\" \"$CODESIGNING_FOLDER_PATH/$FRAMEWORK_FOLDER/Info.plist\"\n        defaults write \"$CODESIGNING_FOLDER_PATH/$FRAMEWORK_FOLDER/Info.plist\" CFBundleExecutable -string \"$DYLIB\"\n        defaults write \"$CODESIGNING_FOLDER_PATH/$FRAMEWORK_FOLDER/Info.plist\" CFBundleIdentifier -string \"$FRAMEWORK_BUNDLE_ID\"\n    fi\n\n    echo \"Installing binary for $RELATIVE_DYLIB\"\n    mv \"$FULL_DYLIB\" \"$CODESIGNING_FOLDER_PATH/$FRAMEWORK_FOLDER\"\n}\n\necho \"Install standard library dylibs...\"\nfind \"$CODESIGNING_FOLDER_PATH/python-stdlib/lib-dynload\" -name \"*.dylib\" | while read FULL_DYLIB; do\n    install_dylib python-stdlib/lib-dynload \"$FULL_DYLIB\"\ndone\n\n# Clean up dylib template\nrm -f \"$CODESIGNING_FOLDER_PATH/dylib-Info-template.plist\"\n\n\necho \"Signing frameworks as $EXPANDED_CODE_SIGN_IDENTITY_NAME ($EXPANDED_CODE_SIGN_IDENTITY)...\"\nfind \"$CODESIGNING_FOLDER_PATH/Frameworks\" -name \"*.framework\" -exec /usr/bin/codesign --force --sign \"$EXPANDED_CODE_SIGN_IDENTITY\" ${OTHER_CODE_SIGN_FLAGS:-} -o runtime --timestamp=none --preserve-metadata=identifier,entitlements,flags --generate-entitlement-der \"{}\" \\;\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4E38E9732C18A476009D14B2 /* Sources */ = {
@@ -229,7 +290,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -292,7 +353,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -318,6 +379,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_ASSET_PATHS = "\"InnoDemo/Preview Content\"";
 				DEVELOPMENT_TEAM = TW8SS868PP;
 				ENABLE_PREVIEWS = YES;
@@ -345,6 +407,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_ASSET_PATHS = "\"InnoDemo/Preview Content\"";
 				DEVELOPMENT_TEAM = TW8SS868PP;
 				ENABLE_PREVIEWS = YES;
@@ -395,7 +458,23 @@
 		};
 /* End XCLocalSwiftPackageReference section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		003BBC332C2ACDC100C3E2F3 /* XCRemoteSwiftPackageReference "PythonKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pvieito/PythonKit.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		003BBC342C2ACDC100C3E2F3 /* PythonKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 003BBC332C2ACDC100C3E2F3 /* XCRemoteSwiftPackageReference "PythonKit" */;
+			productName = PythonKit;
+		};
 		4E38E97C2C18A476009D14B2 /* RealityKitContent */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = RealityKitContent;
